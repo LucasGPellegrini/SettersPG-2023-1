@@ -10,6 +10,6 @@
 - Problema E: Aritmética e Álgebra
 - Problema F: Aritmética e Álgebra
 - Problema G: Combinatória :white_check_mark:
-- Problema H: Combinatória
+- Problema H: Combinatória :white_check_mark:
 - Problema I: Teoria dos Números
 - Problema J: Teoria dos Números
