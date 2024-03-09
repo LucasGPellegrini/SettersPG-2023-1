@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <cctype> 
+#include <cctype>
 
 using namespace std;
 
@@ -23,7 +23,6 @@ std::string obterIniciais(const std::string& nome) {
 
 int main() {
     std::string nome;
-    std::cout << "Digite o nome: ";
     std::getline(std::cin, nome);
 
     std::string iniciais = obterIniciais(nome);
