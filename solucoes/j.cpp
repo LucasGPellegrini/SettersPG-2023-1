@@ -2,14 +2,11 @@
 #include <vector>
 #include <string>
 #include <cmath>
-#include <chrono> // For time measurement
+#include <chrono>
 using namespace std;
-using namespace std::chrono; // For time measurement
+using namespace std::chrono;
 
 bool evaluateExpression(const string& expr, int k) {
-    // Basic implementation to evaluate a mathematical expression
-    // Here, you may use a more robust mathematical expression evaluation library
-    // This implementation is for demonstration purposes only
     int result = 0;
     string currentNum = "";
     char lastOperator = '+';
@@ -43,7 +40,6 @@ bool evaluateExpression(const string& expr, int k) {
         }
     }
 
-    // Evaluate the last number in the expression
     int num = stoi(currentNum);
     switch (lastOperator) {
         case '+':
@@ -65,27 +61,22 @@ bool evaluateExpression(const string& expr, int k) {
             break;
     }
 
-    // Check if the expression is true for the value of k
     return result == k;
 }
 
 bool solve(const vector<string>& expressions, int k, int currentIndex) {
     if (currentIndex == expressions.size()) {
-        // All expressions have been satisfied
         return true;
     }
 
-    // Try different values for k recursively
     for (int i = 0; i <= k; ++i) {
         if (evaluateExpression(expressions[currentIndex], i)) {
-            // If the current expression is true, move to the next expression
             if (solve(expressions, k, currentIndex + 1)) {
                 return true;
             }
         }
     }
 
-    // No combination found for the current expression
     return false;
 }
 
@@ -100,7 +91,6 @@ int main() {
 
     int k = 0;
 
-    // Start time measurement
     auto start = high_resolution_clock::now();
 
     while (true) {
@@ -110,7 +100,6 @@ int main() {
         }
         ++k;
 
-        // Check elapsed time
         auto end = high_resolution_clock::now();
         auto duration = duration_cast<seconds>(end - start).count();
         if (duration > 1) {
