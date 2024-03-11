@@ -11,5 +11,5 @@
 - Problema F: Aritmética e Álgebra :white_check_mark:
 - Problema G: Combinatória :white_check_mark:
 - Problema H: Combinatória :white_check_mark:
-- Problema I: Teoria dos Números
-- Problema J: Teoria dos Números
+- Problema I: Teoria dos Números :white_check_mark:
+- Problema J: Teoria dos Números :white_check_mark:
