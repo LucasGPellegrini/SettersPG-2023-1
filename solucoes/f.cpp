@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
 
-int main(void) {
+int main() {
   int N;
   std::cin >> N;
 
