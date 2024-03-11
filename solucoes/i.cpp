@@ -1,39 +1,37 @@
 #include <iostream>
 #include <vector>
+#include <unordered_map>
 #include <algorithm>
-#include <time.h>
+#include <ctime>
 
 using namespace std;
 
 int main() {
-  vector<int> primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
+    vector<int> primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
 
-  string code;
-  cin >> code;
+    string code;
+    cin >> code;
 
-  clock_t start = clock();
+    time_t start = time(nullptr);
 
-  string decrypted_code = "";
-  for (int i = 0; i < code.length(); i++) {
-    int original_digit = code[i] - '0';
-    int cycle_position = 0;
-    for (int j = 0; j < i; j++) {
-      if (code[j] == code[i]) {
-        cycle_position++;
-      }
+    unordered_map<char, int> digit_counts;
+    string decrypted_code = "";
+
+    for (char digit : code) {
+        digit_counts[digit]++;
+        int decrypted_digit = (digit - '0' + digit_counts[digit] - 1) % primes[decrypted_code.size()];
+        decrypted_code += to_string(decrypted_digit);
     }
-    int decrypted_digit = (original_digit + cycle_position) % primes[i];
-    decrypted_code += to_string(decrypted_digit);
-  }
 
-  clock_t end = clock();
-  double response_time = (double)(end - start) / CLOCKS_PER_SEC;
+    time_t end = time(nullptr);
+    double response_time = difftime(end, start);
 
-  if (response_time <= 1.0) {
-    cout << decrypted_code << endl;
-  } else {
-    cout << "Response time exceeded!" << endl;
-  }
+    if (response_time <= 1.0) {
+        cout << decrypted_code << endl;
+    } else {
+        cout << "Response time exceeded!" << endl;
+    }
 
-  return 0;
+    return 0;
 }
+
