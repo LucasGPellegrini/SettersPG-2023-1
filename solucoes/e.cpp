@@ -42,6 +42,10 @@ int main() {
     sobrou -= segundo_maior;
   }
 
+  if (sobrou > 0) {
+    idas++;
+  }
+
   std::cout << idas << std::endl;
 
   return 0;
