@@ -1,29 +1,32 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <sstream>
 #include <cmath>
-#include "exprtk.hpp"
 
 using namespace std;
 
-typedef exprtk::expression<double> expression_t;
-typedef exprtk::parser<double> parser_t;
+double evaluateExpression(const string& expression, double k) {
+    string modifiedExpression = expression;
+    size_t pos = modifiedExpression.find("k");
+    while (pos != string::npos) {
+        modifiedExpression.replace(pos, 1, to_string(k));
+        pos = modifiedExpression.find("k", pos + 1);
+    }
 
-bool evaluateExpression(const string& expression, double k) {
-    parser_t parser;
-    expression_t expr;
-    expr.register_symbol_table("k", k);
-    parser.compile(expression, expr);
-    return expr.value();
+    stringstream ss(modifiedExpression);
+    double result;
+    ss >> result;
+    return result;
 }
 
 bool checkExpressions(const vector<string>& expressions, double k) {
     for (const string& expr : expressions) {
-        if (!evaluateExpression(expr, k)) {
+        if (evaluateExpression(expr, k) != 0) {
             return false;
         }
     }
-    return true;
+    return true; 
 }
 
 int main() {
